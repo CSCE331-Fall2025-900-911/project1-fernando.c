@@ -3,24 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style1.css">
+    <link id="stylesheet" rel="stylesheet" href="style1.css">
     <title>Fernando Cifuentes | Home</title>
     
 </head>
 <body>
-     <a href="index.html">Home</a>
-     <a href="portfolio.html">Portfolio</a>
-     <a href="qualifications.html">Qualifications</a>
-     <a href="service.html">Service</a>
-     <a href="genai.html">GenAI</a>
-    <h1>Howdy!</h1>
-    <h2>My name is Fernando Cifuentes.</h2>
-    <img src="me.jpg" width="500px">
-    <h3>About me</h3>
-    <p>I am a junior at Texas A&M University, studying Computer Science. I am driven to apply my skills 
-        in software development to help solve real-world problems. I am a hardworking person, who is willing
-        to adapt to change. Have a look at my projects and qualifications to learn more about me!
-    </p>
-    <img src="TAMU.svg">
+    <div class="intro-container">
+        <div class="intro-text">
+            <h1>Welcome!</h1>
+            <h2>My name is Fernando Cifuentes.</h2>
+            <h3>About me</h3>
+            <p>I am a junior at Texas A&M University, studying Computer Science. I am driven to apply my skills 
+                in software development to help solve real-world problems. I am a hardworking person, who is willing
+                to adapt to change. Have a look at my projects and qualifications to learn more about me!
+            </p>
+        </div>
+        <div class="intro-image">
+                <img class="tamu-logo" src="TAMU.svg">
+                <img class="profile-pic" src="me.jpg" width="500px">
+        </div>
+    </div>
+
+<div class="button-container">
+    <button id="themeSwitcher">Switch Style</button>
+</div>
+
+<input type="radio" name="toggle" id="toggleOpen" value="toggleOpen">
+<input type="radio" name="toggle" id="toggleClose" value="toggleClose">
+<figure id="welcomeMessage">
+  <figcaption>
+    <h1>
+      <label for="toggleOpen" title="Click to Open"></label>
+      <label for="toggleClose" title="Click to Close">✖</label>
+      <b>
+        H
+        <a href="portfolio.html" title="Go To Portfolio">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <defs>
+              <lineargradient id="svgGradient" x1="0" y1="0" x2="20" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#00ffc3" />
+                <stop offset="0.09090909090909091" stop-color="#00fad9" />
+                <stop offset="0.18181818181818182" stop-color="#00f4f0" />
+                <stop offset="0.2727272727272727" stop-color="#00eeff" />
+                <stop offset="0.36363636363636365" stop-color="#00e6ff" />
+                <stop offset="0.4545454545454546" stop-color="#00dcff" />
+                <stop offset="0.5454545454545454" stop-color="#00d2ff" />
+                <stop offset="0.6363636363636364" stop-color="#00c5ff" />
+                <stop offset="0.7272727272727273" stop-color="#00b8ff" />
+                <stop offset="0.8181818181818182" stop-color="#6da8ff" />
+                <stop offset="0.9090909090909092" stop-color="#9f97ff" />
+                <stop offset="1" stop-color="#c285ff" />
+              </lineargradient>
+            </defs>
+            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </a>
+      </b>
+      <b>
+        O
+        <a href="qualifications.html" title="Go To Qualifications">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+            <path d="M4.5 3a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V3.5a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2.5 2A.5.5 0 0 1 5 6v1a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2.5 2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8.5a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+        </a>
+      </b>
+      <b>
+        W
+        <a href="service.html" title="Go To Service">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+          </svg>
+        </a>
+      </b>
+      <b>
+        D
+        <a href="genai.html" title="Go To GenAI">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path d="M8 1a3 3 0 0 1 3 3v3a3 3 0 0 1-6 0V4a3 3 0 0 1 3-3zM6 4a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+            <path d="M2.5 8.5A.5.5 0 0 1 3 8h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM12 11.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1 0-1h7a.5.5 0 0 1 .5.5z"/>
+            <path d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm10.293-9.793-1-1a.5.5 0 0 0-.707 0l-1 1a.5.5 0 0 0 .707.707l1-1a.5.5 0 0 0 0-.707zM3.414 2.707l1-1a.5.5 0 0 0 0-.707l-1-1a.5.5 0 0 0-.707.707l1 1a.5.5 0 0 0 .707 0z"/>
+          </svg>
+        </a>
+      </b>
+      <b>
+        Y
+        <a href="https://www.linkedin.com/in/fernando-cif/" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+          </svg>
+        </a>
+      </b>
+    </h1>
+  </figcaption>
+</figure>
+    
+<script src="script.js"></script>
+
 </body>
 </html>

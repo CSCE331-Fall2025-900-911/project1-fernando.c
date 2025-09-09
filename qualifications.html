@@ -3,27 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style1.css">
+    <link id="stylesheet" rel="stylesheet" href="style1.css">
     <title>Qualifications | Fernando Cifuentes</title>
 </head>
 <body>
-     <a href="index.html">Home</a>
-     <a href="portfolio.html">Portfolio</a>
-     <a href="qualifications.html">Qualifications</a>
-     <a href="service.html">Service</a>
-     <a href="genai.html">GenAI</a>
-     <h1>Qualifications</h1>
-     <h2>My Resume:</h2>
-     <iframe src="FernandoCifuentesResume2025.pdf" width="1500px" height="800px"></iframe>
-     <br>
-     <a href="FernandoCifuentesResume2025.pdf">Download Resume</a>
-    <h3>Technical Skills:</h3>
-    <p>Python</p>
-    <p>HTML/CSS</p>
-    <p>C++</p>
-    <p>Understanding of Data Structure & Architecture</p>
-    <h3>Areas of Interest:</h3>
-    <p>Software Development</p>
-    <p>AI</p>
+     <nav class="simple-nav">
+         <ul>
+             <li><a href="index.html">Home</a></li>
+             <li><a href="portfolio.html">Portfolio</a></li>
+             <li class="active"><a href="qualifications.html">Qualifications</a></li>
+             <li><a href="service.html">Service</a></li>
+             <li><a href="genai.html">GenAI</a></li>
+         </ul>
+     </nav>
+
+     <div class="header">
+        <h1>Qualifications</h1>
+        <h2>My Resume:</h2>
+     </div>
+
+     <div class="resume-container">
+        <iframe src="FernandoCifuentesResume2025.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+     </div>
+
+    <div class="download-container">
+        <a class="download-button" href="FernandoCifuentesResume2025.pdf" download>Download Resume</a>
+    </div>
+    
+    <div class="skills-container">
+        <div class="skills-column">
+            <h3>Technical Skills:</h3>
+            <ul>
+                <li>Python</li>
+                <li>HTML/CSS</li>
+                <li>C++</li>
+                <li>Use of AI as an assistant</li>
+                <li>Understanding of Data Structure & Architecture</li>
+            </ul>
+        </div>
+        <div class="skills-column">
+            <h3>Areas of Interest:</h3>
+            <ul>
+                <li>Software Development</li>
+                <li>AI</li>
+                <li>Web Development</li>
+            </ul>
+        </div>
+    </div>
+
+<div class="button-container">
+    <button id="themeSwitcher">Switch Style</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.intro-text h3 {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#themeSwitcher {
+    color: #1a1a1a;
+    background-color: #e0e0e0;
+    border: 2px solid #cccccc;
+}
+
+#themeSwitcher:hover {
+    background-color: #ffffff;
+}
+
+#welcomeMessage figcaption h1 b {
+    background-color: #500000;
+    color: #FFFFFF;
+}
+
+#welcomeMessage figcaption h1::before {
+    color: #ccc;
+}
+#welcomeMessage figcaption h1 label:nth-child(2) {
+    color: #ccc;
+    outline: 1px solid #ccc;
+}
