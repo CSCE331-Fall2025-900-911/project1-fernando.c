@@ -68,8 +68,9 @@
     <!-- Header and Navigation Bar -->
     <header class="bg-gray-900/50 backdrop-blur-md sticky top-0 z-50 border-b border-gray-700">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="genai.html" class="text-2xl font-bold gradient-text">GenAI</a>
+            <a href="index.html" class="text-2xl font-bold gradient-text">GenAI</a>
             <ul class="flex items-center space-x-6">
+                <li><a href="index.html" class="hover:text-sky-300 transition duration-300">Home</a></li>
                 <li><a href="genai.html" class="text-sky-300 font-bold transition duration-300">GenAI</a></li>
                 <li><a href="portfolio.html" class="hover:text-sky-300 transition duration-300">Portfolio</a></li>
                 <li><a href="qualifications.html" class="hover:text-sky-300 transition duration-300">Qualifications</a></li>
@@ -111,6 +112,14 @@ add a box that shows the full prompt used to generate this page.
 ---
 Follow-up prompt:
 The navigation bar is highlighting "Home", when this page should actually be called "GenAI". The file name is genai.html.
+
+---
+Follow-up prompt:
+Add a home button that redirects you to index.html
+
+---
+Follow-up prompt:
+Fix the navigation bar so that GenAI is highlighted. Also, increase the speed of the typing animation, but don't change the deletion animation speed.
                 </code>
             </div>
         </section>
@@ -168,7 +177,7 @@ The navigation bar is highlighting "Home", when this page should actually be cal
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 100 : 200;
+            let typeSpeed = isDeleting ? 100 : 100;
 
             if (!isDeleting && charIndex === currentPhrase.length) {
                 typeSpeed = 2000; // Pause at end of word
@@ -202,5 +211,7 @@ The navigation bar is highlighting "Home", when this page should actually be cal
     </script>
 </body>
 </html>
+
+
 
 
