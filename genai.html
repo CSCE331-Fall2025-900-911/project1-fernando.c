@@ -1,145 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generative AI Showcase</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-            color: #1f2937;
+            background-color: #111827; /* Dark background */
+            color: #E5E7EB; /* Light text */
+        }
+
+        /* Custom animation for the hero text cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Custom animation for fade-in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Glassmorphism effect for cards and prompt box */
+        .glass-effect {
+            background: rgba(31, 41, 55, 0.4); /* Semi-transparent dark bg */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Floating animation for hero image */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-gray-900 text-gray-200">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg py-4 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50">
-        <div class="flex items-center space-x-2">
-            <span class="text-2xl font-bold text-indigo-600">GenAI Demo</span>
-        </div>
-        <div class="mt-4 md:mt-0 flex flex-wrap items-center justify-center space-x-4">
-            <a href="index.html" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Index</a>
-            <a href="portfolio.html" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Portfolio</a>
-            <a href="qualifications.html" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Qualifications</a>
-            <a href="service.html" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Services</a>
-        </div>
-    </nav>
+    <!-- Header and Navigation Bar -->
+    <header class="bg-gray-900/50 backdrop-blur-md sticky top-0 z-50 border-b border-gray-700">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="genai.html" class="text-2xl font-bold gradient-text">GenAI</a>
+            <ul class="flex items-center space-x-6">
+                <li><a href="genai.html" class="text-sky-300 font-bold transition duration-300">GenAI</a></li>
+                <li><a href="portfolio.html" class="hover:text-sky-300 transition duration-300">Portfolio</a></li>
+                <li><a href="qualifications.html" class="hover:text-sky-300 transition duration-300">Qualifications</a></li>
+                <li><a href="service.html" class="hover:text-sky-300 transition duration-300">Service</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Main Content -->
-    <main class="flex-grow container mx-auto p-4 md:p-8 flex items-center justify-center">
-        <div class="bg-white p-6 md:p-10 rounded-3xl shadow-2xl w-full max-w-4xl border border-gray-200 flex flex-col items-center">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-2">Generative AI Showcase</h1>
-            <p class="text-center text-gray-500 mb-8 max-w-prose">
-                This single web page demonstrates the capabilities of a large language model.
-                Enter a prompt below to see how AI can generate creative and informative text in real-time.
-            </p>
+    <main class="container mx-auto px-6 py-16">
 
-            <!-- AI Interaction Area -->
-            <div class="w-full">
-                <div class="mb-6">
-                    <label for="prompt" class="block text-gray-700 font-semibold mb-2">Enter your prompt:</label>
-                    <textarea id="prompt" rows="4" class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200 placeholder-gray-400" placeholder="e.g., Write a short, whimsical story about a squirrel who learns to fly."></textarea>
-                </div>
-
-                <div class="flex justify-center">
-                    <button id="generateBtn" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        Generate Text
-                    </button>
-                </div>
-
-                <!-- Loading Spinner -->
-                <div id="loading" class="mt-8 hidden flex justify-center items-center">
-                    <div class="animate-spin rounded-full h-10 w-10 border-4 border-indigo-500 border-t-transparent"></div>
-                </div>
-
-                <!-- Output Area -->
-                <div id="output" class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-2xl shadow-inner min-h-[100px] whitespace-pre-wrap text-gray-800">
-                    <!-- Generated text will appear here -->
-                </div>
-
-                <!-- Prompt Display Area -->
-                <div class="mt-8 p-6 bg-gray-100 border border-gray-200 rounded-2xl">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Prompt Used to Generate This Page</h3>
-                    <div class="p-4 bg-white border border-gray-300 rounded-xl whitespace-pre-wrap text-gray-600 text-sm">
-                        Generate your own, singular, web page that demonstrates the capabilities of generative AI. The only requirement is that it must have a navigation bar that takes you to these 4 pages: index.html, portfolio.html, qualifications.html, service.html. You do not need to make these pages, just link your navigation bar to them.
-                    </div>
+        <!-- Hero Section -->
+        <section class="text-center min-h-[60vh] flex flex-col justify-center items-center fade-in-section">
+            <div class="max-w-4xl">
+                 <h1 class="text-5xl md:text-7xl font-black mb-4">
+                    The Future is <span id="hero-text" class="gradient-text cursor"></span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                    This entire page, from its code to its content, was crafted by a generative AI. Explore the sections below to see what's possible.
+                </p>
+                <div class="floating w-32 h-32 mx-auto mb-8">
+                    <!-- AI Brain SVG Icon -->
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-full h-full text-sky-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V7.5a2.25 2.25 0 0 0-2.25-2.25H7.5A2.25 2.25 0 0 0 5.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Prompt Box Section -->
+        <section class="my-24 fade-in-section">
+            <div class="glass-effect rounded-2xl p-6 md:p-8 max-w-3xl mx-auto shadow-2xl shadow-sky-900/20">
+                <h3 class="text-xl font-bold mb-4 text-sky-300">Prompts Used to Generate This Page</h3>
+                <code class="block whitespace-pre-wrap text-gray-300 bg-gray-900/50 p-4 rounded-lg text-sm">
+Generate your own, singular, web page that demonstrates the capabilities of generative AI. The only requirement is that it must have a navigation bar that takes you to these 4 pages: index.html, portfolio.html, qualifications.html, service.html. You do not need to make these pages, just link your navigation bar to them. Make the website look cooler, with more animations or features. Use darker colors.
+
+add a box that shows the full prompt used to generate this page.
+
+---
+Follow-up prompt:
+The navigation bar is highlighting "Home", when this page should actually be called "GenAI". The file name is genai.html.
+                </code>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section class="my-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">Core Capabilities</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Text Generation Card -->
+                <div class="glass-effect rounded-2xl p-8 transform hover:scale-105 transition-transform duration-300 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Text Generation</h3>
+                    <p class="text-gray-400">From writing poetry and emails to generating complex reports, AI can understand and produce human-like text based on a simple prompt.</p>
+                </div>
+
+                <!-- Code Generation Card -->
+                <div class="glass-effect rounded-2xl p-8 transform hover:scale-105 transition-transform duration-300 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Code Generation</h3>
+                    <p class="text-gray-400">This very website was coded by an AI. It can generate code in numerous languages, debug, and even explain complex algorithms.</p>
+                </div>
+                
+                <!-- Image Generation Card -->
+                <div class="glass-effect rounded-2xl p-8 transform hover:scale-105 transition-transform duration-300 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Creative Design</h3>
+                    <p class="text-gray-400">AI can generate logos, illustrations, and complete design concepts. It assisted in choosing the layout, color scheme, and animations for this page.</p>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
-        <p class="text-sm">&copy; 2024 Generative AI Showcase. All Rights Reserved.</p>
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 Generative AI. All content and code on this page were generated by an AI assistant.</p>
+        </div>
     </footer>
 
     <script>
-        const generateBtn = document.getElementById('generateBtn');
-        const promptInput = document.getElementById('prompt');
-        const outputDiv = document.getElementById('output');
-        const loadingDiv = document.getElementById('loading');
-        
-        // Function to make the API call with exponential backoff
-        async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (response.status === 429) {
-                        // Too Many Requests, retry with backoff
-                        await new Promise(res => setTimeout(res, delay * Math.pow(2, i)));
-                        continue;
-                    }
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return await response.json();
-                } catch (error) {
-                    if (i === retries - 1) throw error;
-                    await new Promise(res => setTimeout(res, delay * Math.pow(2, i)));
-                }
+        // Hero text typing animation
+        const heroTextElement = document.getElementById('hero-text');
+        const phrases = ["Creative.", "Automated.", "Intelligent.", "Generated."];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                heroTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                heroTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
             }
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
         }
+        
+        document.addEventListener('DOMContentLoaded', type);
 
-        generateBtn.addEventListener('click', async () => {
-            const userPrompt = promptInput.value.trim();
-            if (!userPrompt) {
-                outputDiv.textContent = "Please enter a prompt to generate text.";
-                return;
-            }
-
-            outputDiv.textContent = '';
-            loadingDiv.classList.remove('hidden');
-
-            try {
-                const payload = {
-                    contents: [{ parts: [{ text: userPrompt }] }],
-                };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                const result = await fetchWithRetry(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                const generatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (generatedText) {
-                    outputDiv.textContent = generatedText;
-                } else {
-                    outputDiv.textContent = "Error: Could not generate content. Please try again.";
+        // Fade-in on scroll animation
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
                 }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-            } catch (error) {
-                console.error('Error generating content:', error);
-                outputDiv.textContent = "An error occurred. Please check the console for details.";
-            } finally {
-                loadingDiv.classList.add('hidden');
-            }
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
 </html>
+
+
