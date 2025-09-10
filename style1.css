@@ -188,7 +188,19 @@ body::after {
     gap: 20px;
 }
 
-.tamu-logo { max-width: 120px; height: auto; }
+.tamu-logo { 
+    max-width: 120px;
+    border-radius: 10px; 
+    height: auto; 
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.intro-image a:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+}
+
 .profile-pic { max-width: 500px; height: auto; border-radius: 20px; }
 
 .intro-text h1 { font-size: 52px; margin-bottom: 8px;}
@@ -237,6 +249,26 @@ body::after {
     max-width: 1000px;
     margin: 0 auto 60px auto;
     padding: 0 40px;
+}
+
+.skills-image {
+    justify-content: center;
+    display: flex;
+    max-width: 850px;
+    margin: 0 auto 20px auto;
+}
+
+.icode-logo { 
+    max-width: 300px;
+    border-radius: 10px; 
+    height: auto; 
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.skills-image a:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
 }
 
 .skills-column h3 {
