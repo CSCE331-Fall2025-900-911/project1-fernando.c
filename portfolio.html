@@ -7,61 +7,75 @@
     <title>Technical Portfolio | Fernando Cifuentes</title>
 </head>
 <body>
-     <nav class="simple-nav">
-         <ul>
-             <li><a href="index.html">Home</a></li>
-             <li class="active"><a href="portfolio.html">Portfolio</a></li>
-             <li><a href="qualifications.html">Qualifications</a></li>
-             <li><a href="service.html">Service</a></li>
-             <li><a href="genai.html">GenAI</a></li>
-         </ul>
-     </nav>
+    <div class="content-wrapper">
+        <nav class="simple-nav">
+             <ul>
+                 <li><a href="index.html">Home</a></li>
+                 <li class="active"><a href="portfolio.html">Portfolio</a></li>
+                 <li><a href="qualifications.html">Qualifications</a></li>
+                 <li><a href="service.html">Service</a></li>
+                 <li><a href="genai.html">GenAI</a></li>
+             </ul>
+        </nav>
 
-     <div class="header">
-         <h1>Technical Portfolio</h1>
-         <h2>Projects I've worked on:</h2>
-     </div>
+        <div class="header">
+             <h1>Technical Portfolio</h1>
+             <h2>Projects I've worked on:</h2>
+        </div>
 
-     <div class="project">
-        <h3>SNAIC</h3>
-        <div class="project-content">
-            <a href="https://github.com/aggie-coding-club/SNAIC" class="project-image-link">
-                <img class="project-image snaic" src="SNAIC.png" alt="SNAIC Project Logo">
-            </a>
-            <p>
-                A product of the <a href="https://getinvolved.tamu.edu/org/aggiecodingclub">Aggie Coding Club</a>, SNAIC stands for Seamless Neural Artificial
-                Intelligence Capturer; basically, the program is meant to take a picture and 
-                capture any objects in the picture. The goal of the app was for users to be able
-                to find products they were looking for by taking pictures of them, where then
-                the app would find a link to purchase the item. I was part of the AI team, working 
-                with META's Segment Anything Model, and our job was to configure the model to 
-                identify objects based on where the user clicks on the screen. 
-            </p>
+        <div class="project">
+            <h3>SNAIC</h3>
+            <div class="project-content">
+                <a href="https://github.com/aggie-coding-club/SNAIC" class="project-image-link">
+                    <img class="project-image snaic" src="SNAIC.png" alt="SNAIC Project Logo">
+                </a>
+                <p>
+                    A product of the <a href="https://getinvolved.tamu.edu/org/aggiecodingclub">Aggie Coding Club</a>, SNAIC stands for Seamless Neural Artificial
+                    Intelligence Capturer; basically, the program is meant to take a picture and 
+                    capture any objects in the picture. The goal of the app was for users to be able
+                    to find products they were looking for by taking pictures of them, where then
+                    the app would find a link to purchase the item. I was part of the AI team, working 
+                    with META's Segment Anything Model, and our job was to configure the model to 
+                    identify objects based on where the user clicks on the screen. 
+                </p>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>charity:water Website</h3>
+            <div class="project-content">
+                <p>
+                    Being part of the Global Career Accelerator, one of our tasks was to build a landing 
+                    page for the company charity:water. From this project, I learned about marketing strategies 
+                    as well as following branding guidelines.
+                </p>
+                <a href="https://fernandoc-drive.github.io/charity_water_project/" class="project-image-link">
+                    <img class="project-image charity" src="CharityPage.png" alt="charity:water Project Screenshot">
+                </a>
+            </div>
+        </div>
+
+        <div class="github-link-container">
+            <a class="github-link" href="https://github.com/FernandoC-drive">Check out my GitHub!</a>
         </div>
     </div>
 
-    <div class="project">
-        <h3>charity:water Website</h3>
-        <div class="project-content">
-            <p>
-                Being part of the Global Career Accelerator, one of our tasks was to build a landing 
-                page for the company charity:water. From this project, I learned about marketing strategies 
-                as well as following branding guidelines.
-            </p>
-            <a href="https://fernandoc-drive.github.io/charity_water_project/" class="project-image-link">
-                <img class="project-image charity" src="CharityPage.png" alt="charity:water Project Screenshot">
-            </a>
-        </div>
+
+    <nav id="dark-mode-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="qualifications.html">Qualifications</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="genai.html">GenAI</a></li>
+        </ul>
+    </nav>
+
+    <div class="button-container">
+        <button id="themeSwitcher">Switch Style</button>
     </div>
 
-    <div class="github-link-container">
-        <a class="github-link" href="https://github.com/FernandoC-drive">Check out my GitHub!</a>
-    </div>
-
-<div class="button-container">
-    <button id="themeSwitcher">Switch Style</button>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+

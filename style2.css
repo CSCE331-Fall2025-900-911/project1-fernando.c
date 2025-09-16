@@ -1,31 +1,96 @@
 body {
-    background-color: #1a1a1a;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(to bottom, #0d2c54, #000000);
     color: #e0e0e0;
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.content-wrapper { flex: 3; }
+#dark-mode-nav { display: block; flex: 1; }
+
+/* Hide the light-mode navigation elements */
+#welcomeMessage, .simple-nav, input[name="toggle"] {
+    display: none;
 }
 
-.intro-text h3 {
-    border-bottom: 1px solid #e0e0e0;
+/* Re-apply centering for home page content in dark mode */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-#themeSwitcher {
-    color: #1a1a1a;
-    background-color: #e0e0e0;
-    border: 2px solid #cccccc;
+/* --- DARK MODE HOME PAGE LAYOUT --- */
+body:has(#dark-mode-nav) .intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+body:has(#dark-mode-nav) .intro-headers { order: 1; }
+body:has(#dark-mode-nav) .intro-image { order: 2; margin: 20px 0; }
+body:has(#dark-mode-nav) .intro-paragraph { order: 3; }
+.profile-pic { max-width: 450px; border-radius: 20px; height: auto; }
+
+/* --- PORTFOLIO PAGE --- */
+.project { margin-bottom: 40px; }
+.project h3 { font-size: 32px; text-align: center; margin-bottom: 20px; color: #fff; }
+.project-content { display: flex; align-items: center; gap: 40px; background-color: #1f1f1f; padding: 30px; border-radius: 15px; border: 1px solid #444; transition: all 0.3s ease; }
+.project-content .project-image-link { flex: 0 0 300px; order: 1; transition: flex 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.project-content .project-image { width: 100%; display: block; border-radius: 10px; }
+.project-content p { flex: 1 1 auto; order: 2; font-size: 18px; line-height: 1.7; }
+.project:hover .project-image-link { flex: 0 0 450px; }
+.github-link-container { text-align: center; margin: 40px 0; }
+.github-link { display: inline-block; padding: 12px 24px; background-color: #e0e0e0; color: #1a1a1a; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background-color 0.2s, transform 0.2s; }
+.github-link:hover { background-color: #ffffff; transform: translateY(-2px); }
+
+/* --- QUALIFICATIONS PAGE --- */
+.qualifications-layout { display: flex; align-items: flex-start; gap: 40px; }
+.resume-main-column { flex: 2; }
+.skills-main-column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.resume-container { width: 100%; border: 1px solid #555; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.resume-container iframe { width: 100%; height: 1100px; border: none; }
+.resume-main-column h2 { font-size: 26px; font-weight: 400; }
+.download-container { text-align: center; margin-top: 20px; }
+.download-button { display: inline-block; padding: 12px 24px; background-color: #1a4a8a; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background-color 0.2s; }
+.download-button:hover { background-color: #2a6ebb; }
+.skills-image { margin-bottom: 30px; }
+.icode-logo { max-width: 300px; border-radius: 10px; height: auto; transition: transform 0.3s ease; background-color: #ffffff; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.skills-image a:hover .icode-logo { transform: scale(1.05); }
+.skills-container { display: flex; gap: 40px; }
+.skills-column h3 { font-size: 24px; border-bottom: 2px solid #0d2c54; padding-bottom: 10px; margin-bottom: 20px; }
+.skills-column ul { list-style-type: '✓ '; padding-left: 20px; margin: 0; }
+.skills-column li { font-size: 18px; margin-bottom: 10px; }
+
+/* --- SERVICE PAGE --- */
+.service-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+.service-card { flex-grow: 1; flex-basis: calc(33.333% - 27px); min-width: 300px; background-color: #1f1f1f; border: 1px solid #444; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: background-color 0.3s ease; }
+.service-card:hover { background-color: #2a2a2a; }
+.service-card h2 { font-size: 24px; margin-top: 0; color: #fff; }
+.service-card img { width: 100%; height: 250px; object-fit: contain; background-color: rgba(0,0,0,0.2); border-radius: 8px; }
+.service-card p { max-height: 0; overflow: hidden; margin: 0; padding: 0 10px; font-size: 16px; line-height: 1.6; text-align: left; transition: max-height 0.5s ease-out, margin 0.5s ease-out; }
+.service-card:hover p { max-height: 500px; margin-top: 20px; }
+
+/* --- DARK MODE VERTICAL NAV --- */
+#dark-mode-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
+#dark-mode-nav li a { display: block; color: #e0e0e0; text-decoration: none; font-size: 1.2rem; font-weight: 500; padding: 15px 25px; border: 2px solid #1a4a8a; border-radius: 8px; text-align: center; transition: all 0.2s ease; }
+#dark-mode-nav li.active a, #dark-mode-nav li a:hover { background-color: #1a4a8a; border-color: #fff; }
+
+/* --- THEME SWITCHER --- */
+.button-container { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1001; }
+#themeSwitcher { padding: 10px 20px; font-size: 16px; font-weight: bold; color: #1a1a1a; background-color: #e0e0e0; border: 2px solid #fff; border-radius: 8px; cursor: pointer; }
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 1024px) {
+    body { flex-direction: column; align-items: center; padding: 20px; }
+    .qualifications-layout, .project-content { flex-direction: column; }
+    .project:hover .project-image-link { flex-basis: auto; }
+    #dark-mode-nav { width: 100%; margin-top: 40px; }
+    #dark-mode-nav ul { flex-direction: row; justify-content: center; flex-wrap: wrap; }
 }
 
-#themeSwitcher:hover {
-    background-color: #ffffff;
-}
-
-#welcomeMessage figcaption h1 b {
-    background-color: #500000;
-    color: #FFFFFF;
-}
-
-#welcomeMessage figcaption h1::before {
-    color: #ccc;
-}
-#welcomeMessage figcaption h1 label:nth-child(2) {
-    color: #ccc;
-    outline: 1px solid #ccc;
-}

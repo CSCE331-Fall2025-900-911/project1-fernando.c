@@ -21,16 +21,6 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-body::before, body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background-color: #000000;
-    z-index: -1;
-}
-
 body::before {
     left: 150px;
 }
@@ -97,6 +87,10 @@ body::after {
     text-align: left;
 }
 
+.centered-subtitle {
+    width: 100%;
+    text-align: center;
+}
 
 .project {
     max-width: 1200px;
@@ -168,6 +162,13 @@ body::after {
     background-color: #555;
 }
 
+#dark-mode-nav {
+    display: none;
+}
+#welcomeMessage, .simple-nav {
+    display: block;
+}
+
 .intro-container {
     display: flex;
     align-items: center;
@@ -176,8 +177,7 @@ body::after {
     max-width: 1200px;
     margin: 40px auto;
 }
-
-.intro-text { flex: 1; text-align: left; }
+.intro-text { flex: 1; }
 .intro-text h3 { border-bottom: 1px solid #334; }
 
 .intro-image {
@@ -589,4 +589,26 @@ input { display: none; }
 @media (max-width: 500px) { #welcomeMessage { font-size: 80%; } #toggleOpen:checked ~ #welcomeMessage { font-size: 100%; } }
 @media (max-width: 400px) { #welcomeMessage { font-size: 65%; } }
 
+/* General Content Responsiveness */
+@media (max-width: 1024px) {
+    body::before { left: 40px; }
+    body::after { right: 40px; }
+    .intro-container { flex-direction: column; text-align: center; }
+    .intro-image { flex-direction: column; justify-content: center; }
+    .project-content { flex-direction: column; }
+    .project-image-link { max-width: 80%; }
+    .project:nth-of-type(3) .project-content { flex-direction: column-reverse; }
+    .skills-container { flex-direction: column; gap: 40px; text-align: center; }
+    .service-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
+@media (max-width: 768px) {
+    body::before, body::after { display: none; }
+    .header, .project, .service-grid, .intro-container, .skills-container { padding: 0 20px; }
+    .project-image-link { max-width: 100%; }
+    .service-grid { grid-template-columns: 1fr; }
+    .header h1, .intro-text h1 { font-size: 38px; }
+    .header h2, .intro-text h2 { font-size: 22px; }
+}
+
+#dark-mode-nav { display: none; }
